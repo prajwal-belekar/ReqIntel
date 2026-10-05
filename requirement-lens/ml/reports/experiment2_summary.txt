@@ -1,0 +1,19 @@
+Experiment 2: TF-IDF + Logistic Regression with class_weight='balanced'
+============================================================
+
+TF-IDF features: 5000
+N-gram range: (1, 1)
+Stop words: english
+class_weight: balanced
+
+Metrics:
+Accuracy: 0.6779
+Macro Precision: 0.5500
+Macro Recall: 0.6315
+Macro F1: 0.5679
+Weighted F1: 0.6890
+
+Timing:
+Vectorizer: 0.01s
+Training: 0.04s
+Prediction: 0.0010s

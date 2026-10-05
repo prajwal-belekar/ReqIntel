@@ -1,0 +1,26 @@
+PROMISE DATASET STATISTICS SUMMARY
+============================================================
+Total records: 969
+Unique classes: 12
+Unique projects: 47
+
+Class distribution:
+_class_
+F     444
+SE    125
+US     85
+O      77
+PE     67
+LF     49
+A      31
+MN     24
+SC     22
+FT     18
+L      15
+PO     12
+Name: count, dtype: int64
+
+Text length stats:
+Mean: 109.2
+Median: 94.0
+Std: 61.1

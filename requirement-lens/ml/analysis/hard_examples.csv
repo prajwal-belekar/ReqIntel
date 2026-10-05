@@ -1,0 +1,68 @@
+requirement_text,category,ProjectID,text_length,word_count,class_label,actual,predicted,confidence
+The WCS system shall be run in a Windows environment. The WCS shall be accessed by users through the Internet on an IBM computer running a Windows 2000 or above operating system.,O,13,178,32,O,O,PO,0.6042002521152474
+The product shall be based on web and has to be run from a web server.,O,46,70,16,O,O,PO,0.544765785571966
+The system shall display all the available financing options.,F,46,61,9,F,F,A,0.4360673112905904
+The product shall run on the existing hardware for all environments.,O,5,68,11,O,O,PO,0.39676399094310183
+The product must support Mozilla Firefox 1.0 and above.,O,5,55,9,O,O,SC,0.38739096381412563
+The system shall provide handicap access.,US,46,41,6,US,US,SE,0.37091987047673164
+The maintenance of the product will fall within the established corporate maintenance windows.,O,5,94,13,O,O,MN,0.3683364719968265
+The system shall display all the available promotions to the user.,F,46,66,11,F,F,A,0.33604845354339535
+The audit report shall be available to other adjusters at later points in time.,F,5,79,14,F,F,A,0.29180653465500833
+The system shall allow the user to scroll the campus map from the campus map tab.,US,25,81,16,US,US,F,0.2734616515706884
+The system shall display the shipping charges.,F,46,46,7,F,F,LF,0.2706712172928816
+The system shall display tentative duration for shipping.,F,46,57,8,F,F,LF,0.2706712172928816
+The campus map shall have a pause/resume button. The pause and resume button will allow the user to scroll and select other buildings without being interrupted by the automatic search and announce feature.,LF,25,205,33,LF,LF,F,0.25998163710517597
+For estimators  the product shall be able to be operated in a repair facility during dirty and noisy conditions.,O,5,112,19,O,O,US,0.253197013115784
+The system interface will use CCR nomenclature. The system must use the same nomenclature used in the existing WCS system and reports,LF,13,133,22,LF,LF,O,0.24529680073608418
+The system will support mobile users in some way.,PO,28,49,9,PO,PO,SC,0.24483939091696597
+A waiter shall only be able to log into one tablet at any given instance of time.,SE,27,81,17,SE,SE,PE,0.23836081344017437
+The interface must summarize the data in a fashion that\92s appealing to CCR management. Every report type must have at least one high level summary shown in the results dashboard/interface,LF,13,189,30,LF,LF,O,0.23389289100613017
+The system should warn ECA users about the malfunction of the system.,FT,40,69,12,FT,FT,SE,0.23359910550087776
+The system shall show a tabbed display (or equivalent functionality) with the campus map on one tab and info on the most recently announced building on the other.,LF,25,162,28,LF,LF,F,0.22993055935886775
+The system shall provide multi language support.,US,46,48,7,US,US,SC,0.22991941879781455
+Users shall be required to log in to the Cafeteria Ordering System for all operations except viewing a menu.,F,20,108,19,F,F,SE,0.22244270198176208
+The system should be simple to use,LF,40,34,7,LF,LF,US,0.22135550412331523
+The system shall enable user to enter the payment information.,F,46,62,10,F,F,SE,0.2207269862673032
+The WCS system shall have the ability to include data for regions outside the United States and be accessed by users outside of the United States if approved by CCR management.,SC,13,176,31,SC,SC,SE,0.21690501767461062
+The system shall notify the user about any changes made to the order.,F,46,69,13,F,F,SE,0.20558758721998538
+The ratings shall be from a scale of 1-10,F,5,41,9,F,F,SC,0.20477520296975465
+The campus map shall provide visual clues regarding what areas have prepared audio and therefore may be selected.,LF,25,113,18,LF,LF,F,0.19998647850642942
+The system shall display all the available components of the product to configure.,F,46,82,13,F,F,A,0.19990277089764585
+The system shall maintain customer email information as a required part of customer profile.,F,46,92,14,F,F,SE,0.19726123685602098
+The system shall confirm all transactions with the customer's web browser.,US,46,74,11,US,US,O,0.19544014158190257
+The system shall display different shipping options provided by shipping department.,F,46,84,11,F,F,LF,0.19110625465743286
+The system shall enable the user to enter their reviews and ratings.,F,46,68,12,F,F,SE,0.18563113946949206
+The vehicle data shall include vehicle year make and model,F,5,58,10,F,F,SE,0.18359701518062477
+The system shall display available payment methods for payment.,F,46,63,9,F,F,A,0.18135104292554133
+The system shall display the most frequently searched items by the user in the profile.,F,46,87,15,F,F,FT,0.18033727426495988
+The available recycled parts information and their suppliers shall be returned to the user.,F,5,91,14,F,F,SE,0.17995405751477828
+The estimator shall not apply recycled parts to the collision estimate if no available parts are returned.,F,5,106,17,F,F,A,0.1793072641437333
+The search radius shall be between 1 and 30 miles,F,5,49,10,F,F,PE,0.17889044275125623
+The product must support Internet Explorer 5.5 and above.,O,5,57,9,O,O,MN,0.1786905900023886
+The WCS system shall have the ability to connect other designated WCS databases currently not included in the system.,SC,13,117,19,SC,SC,F,0.17529095669036646
+The WCS system must run queries to the WCS databases once again (on a specified day) to update the available data available to CCR users. Queries must be made to external databases for data refresh once a week.,MN,13,210,38,MN,MN,A,0.17257350672499
+The system shall flag tablets that fail to send timely keep-alive messages as non-operational and disassociate the assigned waiter from the tablet.,FT,27,147,22,FT,FT,O,0.1710401120060382
+The WCS system shall use appropriate nomenclature and terminology as defined by the Corporate Community Grants organization. All interfaces and reports will undergo usability tests by CCR users.,US,13,194,28,US,US,SE,0.1707435297263374
+The product shall free of computer viruses.,SE,5,43,7,SE,SE,O,0.17046641298569135
+The audit report shall include the percentage of available recycled parts used in the estimate ,F,5,95,15,F,F,O,0.1704128151321554
+The system shall retain the available recycled parts and suppliers returned from the search.,F,5,92,14,F,F,A,0.16990125306687281
+The system shall display only 10 matching result on the current screen.,F,46,71,12,F,F,LF,0.1686215264658685
+The customer's web browser shall never display a customer's credit card number after retrieving from the database.  It shall always be shown with just the last 4 digits of the credit card number.,SE,46,195,33,SE,SE,O,0.16413020246826163
+The audit report shall be displayed to the user.,F,5,48,9,F,F,SE,0.16391229424903886
+The user shall enter new ratings based on the audit report,F,5,58,11,F,F,SE,0.15989536471101753
+The system shall search for available recycled parts for the supplied vehicle parts and suppliers.,F,5,98,15,F,F,A,0.15908606192889388
+The customer's web browser shall never display a customer's password.  It shall always be echoed with special characters representing typed characters.,SE,46,151,21,SE,SE,F,0.1573649950767985
+The system shall be able to display a menu at all times to facilitate manual order taking should the need arise.,LF,27,112,21,LF,LF,US,0.1564697625332653
+The system must use a point and click interface. 100% of all selection and navigation functionality must be able to be activated/selected by either a mouse or a keyboard,US,13,169,29,US,US,O,0.15512153402701176
+Product installations and upgrades shall be handled by the middleware technology team within established launch time frames.,O,5,124,17,O,O,PE,0.15333145707462356
+The ratings shall include categories for attempted use of recycled parts and actual use of recycled parts,F,5,105,17,F,F,SE,0.1530254136946481
+The system shall generate an audit report based on the available recycled parts and the collision estimate.,F,5,107,17,F,F,A,0.15168978600918376
+The product shall adhere to the corporate Architecture guidelines,O,5,65,9,O,O,LF,0.1504134566163396
+The product shall be supported using the corporate support center.,O,5,66,10,O,O,LF,0.14767286676843003
+The adjuster shall be able to override the preferred repair facitlity on the estimate assignment.,F,5,97,15,F,F,US,0.1433805055998675
+The estimator shall search for available recycled parts using damaged vehicle parts information.,F,5,96,13,F,F,SE,0.1398870040485509
+The audit report shall include the total number of recycled parts used in the estimate.,F,5,87,15,F,F,O,0.13954027044802117
+The system should use the company colors and logos.,LF,27,51,9,LF,LF,SE,0.1363763422664828
+High level of performance requires high speed network and high level of connectivity.,PE,37,85,13,PE,PE,F,0.13030022594335905
+The product shall adhere to the corporate online availability schedule.  The application is brought down only within 98% of the scheduled outages per the availability schedule.,A,5,176,26,A,A,MN,0.12763342558862634
+The performance shall depend upon hardware components of the client/customer.,PE,46,77,10,PE,PE,SC,0.116673322364876

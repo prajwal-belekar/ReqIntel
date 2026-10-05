@@ -1,0 +1,19 @@
+Experiment 3: TF-IDF + Logistic Regression with unigrams + bigrams
+============================================================
+
+TF-IDF features: 10000
+N-gram range: (1, 2)
+Stop words: english
+class_weight: balanced
+
+Metrics:
+Accuracy: 0.6298
+Macro Precision: 0.4805
+Macro Recall: 0.5561
+Macro F1: 0.4937
+Weighted F1: 0.6360
+
+Timing:
+Vectorizer: 0.02s
+Training: 0.05s
+Prediction: 0.0000s

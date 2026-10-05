@@ -1,0 +1,8 @@
+Total records: 969
+Train records: 761
+Test records: 208
+Unique projects: 47
+Projects in train: 37
+Projects in test: 10
+Max class distribution difference: 0.0255
+Class distribution preserved: True

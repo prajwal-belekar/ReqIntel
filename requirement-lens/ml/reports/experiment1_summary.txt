@@ -1,0 +1,18 @@
+Experiment 1: Baseline TF-IDF + Logistic Regression
+============================================================
+
+TF-IDF features: 5000
+N-gram range: (1, 1)
+Stop words: english
+
+Metrics:
+Accuracy: 0.6250
+Macro Precision: 0.4978
+Macro Recall: 0.2615
+Macro F1: 0.3039
+Weighted F1: 0.5548
+
+Timing:
+Vectorizer: 0.02s
+Training: 0.08s
+Prediction: 0.0000s

@@ -1,0 +1,535 @@
+[
+  {
+    "faiss_id": 0,
+    "guideline_id": "SEC-001",
+    "title": "Input Validation and Sanitization",
+    "category": "Security",
+    "guideline_text": "All user input must be validated and sanitized before processing to prevent injection attacks and ensure data integrity.",
+    "tags": [
+      "input validation",
+      "injection prevention",
+      "security"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 1,
+    "guideline_id": "SEC-002",
+    "title": "Account Lockout After Failed Attempts",
+    "category": "Security",
+    "guideline_text": "User accounts should be temporarily locked after multiple consecutive failed login attempts to prevent brute force attacks.",
+    "tags": [
+      "authentication",
+      "brute force",
+      "security"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 2,
+    "guideline_id": "SEC-003",
+    "title": "Password Complexity Requirements",
+    "category": "Security",
+    "guideline_text": "Password policies should enforce minimum complexity including uppercase, lowercase, numbers, and special characters.",
+    "tags": [
+      "password",
+      "authentication",
+      "security"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 3,
+    "guideline_id": "SEC-004",
+    "title": "Encrypted Data Transmission",
+    "category": "Security",
+    "guideline_text": "Sensitive data must be transmitted using encrypted channels such as HTTPS to protect against eavesdropping.",
+    "tags": [
+      "encryption",
+      "transmission",
+      "security"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 4,
+    "guideline_id": "SEC-005",
+    "title": "Secure Session Management",
+    "category": "Security",
+    "guideline_text": "Session tokens should be securely generated, stored, and invalidated upon logout to prevent session hijacking.",
+    "tags": [
+      "session",
+      "authentication",
+      "security"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 5,
+    "guideline_id": "AUTH-001",
+    "title": "Multi-Factor Authentication",
+    "category": "Authentication",
+    "guideline_text": "Critical systems should implement multi-factor authentication combining password with additional verification methods.",
+    "tags": [
+      "mfa",
+      "authentication",
+      "security"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 6,
+    "guideline_id": "AUTH-002",
+    "title": "Single Sign-On Integration",
+    "category": "Authentication",
+    "guideline_text": "Enterprise applications should support single sign-on for seamless user experience across multiple systems.",
+    "tags": [
+      "sso",
+      "authentication",
+      "integration"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 7,
+    "guideline_id": "AUTH-003",
+    "title": "Password Reset Security",
+    "category": "Authentication",
+    "guideline_text": "Password reset mechanisms must verify user identity through secure channels before allowing password changes.",
+    "tags": [
+      "password reset",
+      "authentication",
+      "security"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 8,
+    "guideline_id": "AUTH-004",
+    "title": "Authentication Timeout",
+    "category": "Authentication",
+    "guideline_text": "User sessions should automatically timeout after periods of inactivity to protect against unauthorized access.",
+    "tags": [
+      "timeout",
+      "session",
+      "security"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 9,
+    "guideline_id": "AUTH-005",
+    "title": "Role-Based Access Control",
+    "category": "Authorization",
+    "guideline_text": "System access permissions should be managed through role-based access control with principle of least privilege.",
+    "tags": [
+      "rbac",
+      "authorization",
+      "access control"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 10,
+    "guideline_id": "AUTH-006",
+    "title": "Authorization Checks",
+    "category": "Authorization",
+    "guideline_text": "All resource access operations must include authorization checks to ensure users have appropriate permissions.",
+    "tags": [
+      "authorization",
+      "permissions",
+      "security"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 11,
+    "guideline_id": "PERF-001",
+    "title": "Response Time Requirements",
+    "category": "Performance",
+    "guideline_text": "System response times should meet specified thresholds for user operations to ensure acceptable performance.",
+    "tags": [
+      "response time",
+      "performance",
+      "usability"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 12,
+    "guideline_id": "PERF-002",
+    "title": "Database Query Optimization",
+    "category": "Performance",
+    "guideline_text": "Database queries should be optimized using appropriate indexes and query patterns to minimize response latency.",
+    "tags": [
+      "database",
+      "optimization",
+      "performance"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 13,
+    "guideline_id": "PERF-003",
+    "title": "Caching Strategy",
+    "category": "Performance",
+    "guideline_text": "Frequently accessed data should be cached to reduce database load and improve system responsiveness.",
+    "tags": [
+      "caching",
+      "performance",
+      "optimization"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 14,
+    "guideline_id": "PERF-004",
+    "title": "Concurrent User Support",
+    "category": "Performance",
+    "guideline_text": "System should support specified number of concurrent users without degradation in response times.",
+    "tags": [
+      "concurrency",
+      "performance",
+      "scalability"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 15,
+    "guideline_id": "PERF-005",
+    "title": "Resource Utilization Limits",
+    "category": "Performance",
+    "guideline_text": "Application should maintain CPU and memory usage within acceptable thresholds under normal load.",
+    "tags": [
+      "resources",
+      "performance",
+      "monitoring"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 16,
+    "guideline_id": "AVAIL-001",
+    "title": "System Uptime Requirements",
+    "category": "Availability",
+    "guideline_text": "System availability should meet specified uptime percentage during operational hours.",
+    "tags": [
+      "uptime",
+      "availability",
+      "reliability"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 17,
+    "guideline_id": "AVAIL-002",
+    "title": "High Availability Architecture",
+    "category": "Availability",
+    "guideline_text": "Critical systems should implement redundant components to ensure continued operation during failures.",
+    "tags": [
+      "high availability",
+      "redundancy",
+      "fault tolerance"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 18,
+    "guideline_id": "AVAIL-003",
+    "title": "Disaster Recovery Plan",
+    "category": "Availability",
+    "guideline_text": "Systems should have documented disaster recovery procedures with regular testing and backups.",
+    "tags": [
+      "disaster recovery",
+      "backup",
+      "availability"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 19,
+    "guideline_id": "AVAIL-004",
+    "title": "Graceful Degradation",
+    "category": "Availability",
+    "guideline_text": "System should provide reduced functionality during partial failures rather than complete unavailability.",
+    "tags": [
+      "degradation",
+      "fault tolerance",
+      "availability"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 20,
+    "guideline_id": "USAB-001",
+    "title": "User Interface Intuitiveness",
+    "category": "Usability",
+    "guideline_text": "User interface should be intuitive and self-explanatory for new users without extensive training.",
+    "tags": [
+      "ui",
+      "usability",
+      "user experience"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 21,
+    "guideline_id": "USAB-002",
+    "title": "Error Message Clarity",
+    "category": "Usability",
+    "guideline_text": "Error messages should provide clear, actionable guidance for users to resolve issues.",
+    "tags": [
+      "error handling",
+      "usability",
+      "user experience"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 22,
+    "guideline_id": "USAB-003",
+    "title": "Accessibility Standards",
+    "category": "Usability",
+    "guideline_text": "User interface should comply with accessibility standards to support users with disabilities.",
+    "tags": [
+      "accessibility",
+      "usability",
+      "compliance"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 23,
+    "guideline_id": "USAB-004",
+    "title": "Consistent Navigation",
+    "category": "Usability",
+    "guideline_text": "Navigation patterns should be consistent across all application screens for predictable user experience.",
+    "tags": [
+      "navigation",
+      "consistency",
+      "usability"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 24,
+    "guideline_id": "SCAL-001",
+    "title": "Horizontal Scalability",
+    "category": "Scalability",
+    "guideline_text": "System architecture should support horizontal scaling by adding more servers to handle increased load.",
+    "tags": [
+      "scalability",
+      "architecture",
+      "load balancing"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 25,
+    "guideline_id": "SCAL-002",
+    "title": "Database Scaling Strategy",
+    "category": "Scalability",
+    "guideline_text": "Database design should support scaling through partitioning, sharding, or read replicas as needed.",
+    "tags": [
+      "database",
+      "scalability",
+      "architecture"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 26,
+    "guideline_id": "SCAL-003",
+    "title": "Load Balancing Implementation",
+    "category": "Scalability",
+    "guideline_text": "Web applications should implement load balancing to distribute requests across multiple servers.",
+    "tags": [
+      "load balancing",
+      "scalability",
+      "performance"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 27,
+    "guideline_id": "SCAL-004",
+    "title": "Elastic Resource Allocation",
+    "category": "Scalability",
+    "guideline_text": "System should automatically adjust resources based on demand to optimize performance and cost.",
+    "tags": [
+      "elasticity",
+      "cloud",
+      "scalability"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 28,
+    "guideline_id": "FTOL-001",
+    "title": "Fault Detection Mechanisms",
+    "category": "Fault Tolerance",
+    "guideline_text": "System should implement monitoring and detection mechanisms for component failures.",
+    "tags": [
+      "fault detection",
+      "monitoring",
+      "reliability"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 29,
+    "guideline_id": "FTOL-002",
+    "title": "Automatic Failover",
+    "category": "Fault Tolerance",
+    "guideline_text": "Critical components should support automatic failover to backup systems upon failure detection.",
+    "tags": [
+      "failover",
+      "high availability",
+      "fault tolerance"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 30,
+    "guideline_id": "FTOL-003",
+    "title": "Data Consistency Checks",
+    "category": "Fault Tolerance",
+    "guideline_text": "System should perform regular data consistency checks to detect and correct data corruption.",
+    "tags": [
+      "data integrity",
+      "consistency",
+      "fault tolerance"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 31,
+    "guideline_id": "FTOL-004",
+    "title": "Circuit Breaker Pattern",
+    "category": "Fault Tolerance",
+    "guideline_text": "External service calls should implement circuit breaker pattern to prevent cascade failures.",
+    "tags": [
+      "circuit breaker",
+      "resilience",
+      "fault tolerance"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 32,
+    "guideline_id": "MAINT-001",
+    "title": "Code Documentation Standards",
+    "category": "Maintainability",
+    "guideline_text": "Source code should include comprehensive documentation explaining purpose, usage, and dependencies.",
+    "tags": [
+      "documentation",
+      "maintainability",
+      "code quality"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 33,
+    "guideline_id": "MAINT-002",
+    "title": "Modular Architecture",
+    "category": "Maintainability",
+    "guideline_text": "Application should follow modular design principles to enable independent development and testing.",
+    "tags": [
+      "modularity",
+      "architecture",
+      "maintainability"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 34,
+    "guideline_id": "MAINT-003",
+    "title": "Automated Testing Coverage",
+    "category": "Maintainability",
+    "guideline_text": "Code changes should be supported by automated tests with minimum coverage thresholds.",
+    "tags": [
+      "testing",
+      "quality",
+      "maintainability"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 35,
+    "guideline_id": "MAINT-004",
+    "title": "Version Control Practices",
+    "category": "Maintainability",
+    "guideline_text": "All code changes should be tracked in version control with meaningful commit messages.",
+    "tags": [
+      "version control",
+      "collaboration",
+      "maintainability"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 36,
+    "guideline_id": "MAINT-005",
+    "title": "Technical Debt Management",
+    "category": "Maintainability",
+    "guideline_text": "Technical debt should be tracked and addressed regularly to prevent system degradation.",
+    "tags": [
+      "technical debt",
+      "quality",
+      "maintainability"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 37,
+    "guideline_id": "LGAL-001",
+    "title": "Data Privacy Compliance",
+    "category": "Legal/Compliance",
+    "guideline_text": "System must comply with data privacy regulations such as GDPR for handling personal information.",
+    "tags": [
+      "gdpr",
+      "privacy",
+      "compliance"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 38,
+    "guideline_id": "LGAL-002",
+    "title": "Audit Logging Requirements",
+    "category": "Legal/Compliance",
+    "guideline_text": "All security-related events should be logged with timestamps for audit and compliance purposes.",
+    "tags": [
+      "audit",
+      "logging",
+      "compliance"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 39,
+    "guideline_id": "LGAL-003",
+    "title": "Data Retention Policies",
+    "category": "Legal/Compliance",
+    "guideline_text": "Data should be retained only for specified periods according to legal and business requirements.",
+    "tags": [
+      "data retention",
+      "compliance",
+      "privacy"
+    ],
+    "source": "General Software Engineering Principles"
+  },
+  {
+    "faiss_id": 40,
+    "guideline_id": "LGAL-004",
+    "title": "Regulatory Standards Adherence",
+    "category": "Legal/Compliance",
+    "guideline_text": "System development should adhere to relevant industry standards and regulatory requirements.",
+    "tags": [
+      "standards",
+      "compliance",
+      "quality"
+    ],
+    "source": "General Software Engineering Principles"
+  }
+]

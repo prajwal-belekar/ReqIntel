@@ -1,0 +1,209 @@
+requirement_text,category,ProjectID,text_length,word_count,class_label
+The product must support Internet Explorer 5.5 and above.,O,5,57,9,O
+The product must support Mozilla Firefox 1.0 and above.,O,5,55,9,O
+The product shall interface with the Choice Parts System.  This provides the feed of recycled parts data.,O,5,105,17,O
+The product shall run on the existing hardware for all environments.,O,5,68,11,O
+The product shall adhere to the corporate Architecture guidelines,O,5,65,9,O
+The product shall comply with corporate User Interface Guidelines,LF,5,65,9,LF
+The product shall comply with corporate color scheme,LF,5,52,8,LF
+The appearance of the product shall appear professional,LF,5,55,8,LF
+The product shall be easy to use by Adjusters and Collision Estimators.  95% of Adjusters and Collision Estimators shall find the product easy to use.,US,5,150,25,US
+The product shall increase productivity of Collision Estimators. 80% of the Collision Estimators shall agree their productivity has increase within 1 month of using the product.,US,5,177,26,US
+Users shall feel satisfied using the product.  85% of all users will be satisfied with the product.,US,5,99,17,US
+The product shall be easy to learn by Adjusters and Collision Estimators.  The product shall be learned with two days onsite training,US,5,133,22,US
+The user shall easily locate instructions while using the product.  User help can be found within 90% of the system.,US,5,116,20,US
+The search for recycled parts shall take no longer than 15 seconds.  The search results shall be returned in under 15 seconds.,PE,5,126,22,PE
+The search for the preferred repair facility shall take no longer than 8 seconds.  The preferred repair facility is returned within 8 seconds,PE,5,141,23,PE
+The recycled parts audit report shall be returned to the user within 10 seconds.  The audit report shall be returned within 10 seconds.,PE,5,135,23,PE
+The preferred repair facility ratings shall be saved within 5 seconds. The save shall occur within 5 seconds.,PE,5,109,18,PE
+The product shall adhere to the corporate online availability schedule.  The application is brought down only within 98% of the scheduled outages per the availability schedule.,A,5,176,26,A
+The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.,A,5,109,20,A
+The product shall be able to handle up to 1500 simultaneous users. The system shall perform with 1500 users as a time.,SC,5,118,22,SC
+The average number of recycled parts records per day shall be 50 000.,SC,5,69,13,SC
+The product shall be able to handle 10 000 concurrent users within 2 years of the initial launch.,SC,5,97,18,SC
+For estimators  the product shall be able to be operated in a repair facility during dirty and noisy conditions.,O,5,112,19,O
+The product shall interface with the ChoiceParts system once per day at approximately 1:00 AM.,O,5,94,15,O
+The maintenance of the product will fall within the established corporate maintenance windows.,O,5,94,13,O
+The product shall be supported using the corporate support center.,O,5,66,10,O
+Product installations and upgrades shall be handled by the middleware technology team within established launch time frames.,O,5,124,17,O
+Only adjusters can request recycled parts audit reports. No users without an adjuster role shall request recycled parts audits.,SE,5,127,19,SE
+Only adjusters with a supervisor role can update preferred repair facility ratings. Users without the supervisor role cannot access the repair facility ratings.,SE,5,160,23,SE
+Only collision estimators shall search for recycled parts.  Users without the collision estimator role shall not have access to the search for recycled parts.,SE,5,158,24,SE
+Only valid data shall be entered into the system. No invalid data shall be entered into the system.,SE,5,99,18,SE
+One insurance company shall not be able to view another insurance companys claim data.,SE,5,86,14,SE
+The product shall free of computer viruses.,SE,5,43,7,SE
+The system shall prevent malicious attacks including denial of service.,SE,5,71,10,SE
+The product must comply with Sarbanes-Oxley.,L,5,44,6,L
+The product shall comply with the estimatics laws relating to recycled parts usage.,L,5,83,13,L
+The product shall comply with insurance regulations regarding claims processing.,L,5,80,10,L
+The user shall search for the preferred repair facility using vehicle  vehicle location  and radius in miles,F,5,108,17,F
+The vehicle data shall include vehicle year make and model,F,5,58,10,F
+The vehicle location shall include street address city state and zipcode,F,5,72,11,F
+The system shall resolve the zipcode for the street address  city  and state if zipcode is unknown.,F,5,99,17,F
+The search radius shall be between 1 and 30 miles,F,5,49,10,F
+The system shall locate the preferred repair facility with the highest ratings for the input criteria,F,5,101,16,F
+The adjuster shall enter the preferred repair facility on the estimate assignment.,F,5,82,12,F
+The adjuster shall be able to override the preferred repair facitlity on the estimate assignment.,F,5,97,15,F
+The preferred repair facility shall be returned to the user.,F,5,60,10,F
+The system shall return a list of repair facilities within the radius if the preferred repair facility cannot be determined.,F,5,124,20,F
+The estimator shall search for available recycled parts using damaged vehicle parts information.,F,5,96,13,F
+The estimator shall search for available recycled parts using a list of preferred parts suppliers.,F,5,98,15,F
+The system shall search for available recycled parts for the supplied vehicle parts and suppliers.,F,5,98,15,F
+The estimator shall search by zipcode with a radius of 30 miles if no parts are found for the preferred parts suppliers,F,5,119,22,F
+The system shall retain the available recycled parts and suppliers returned from the search.,F,5,92,14,F
+The available recycled parts information and their suppliers shall be returned to the user.,F,5,91,14,F
+The estimator shall apply selected recycled parts to the collision estimate.,F,5,76,11,F
+The estimator shall not apply recycled parts to the collision estimate if no available parts are returned.,F,5,106,17,F
+The adjuster shall review the collision estimate.,F,5,49,7,F
+The adjuster shall request a recycled parts audit of the collision estimate.,F,5,76,12,F
+The recycled parts search results provided to the estimator shall be retrieved by the system.,F,5,93,15,F
+The system shall generate an audit report based on the available recycled parts and the collision estimate.,F,5,107,17,F
+The audit report shall include the total number of recycled parts used in the estimate.,F,5,87,15,F
+The audit report shall include the number of available recycled parts from the original search results.,F,5,103,16,F
+The audit report shall include the percentage of available recycled parts used in the estimate ,F,5,95,15,F
+The audit report shall include the total score of the audit which sums the indivual line items.,F,5,95,17,F
+The audit report shall be displayed to the user.,F,5,48,9,F
+The audit report shall be available to other adjusters at later points in time.,F,5,79,14,F
+The user shall select to view the preferred repair facility ratings.,F,5,68,11,F
+The current repair facility ratings shall be displayed to the user.,F,5,67,11,F
+The system will display a blank set of ratings if there are not ratings yet defined.,F,5,84,16,F
+The user shall enter new ratings based on the audit report,F,5,58,11,F
+The ratings shall be from a scale of 1-10,F,5,41,9,F
+The ratings shall include categories for attempted use of recycled parts and actual use of recycled parts,F,5,105,17,F
+The user shall select to save the preferred repair facility ratings.,F,5,68,11,F
+The preferred repair facility ratings shall be saved by the system.,F,5,67,11,F
+The system shall use IBM and CCR branding standards. The interface must have one IBM logo and one CCR logo.,LF,13,107,20,LF
+The system shall be displayable on any work computer a CCR user may have. The system interface shall be formatted to display at 800 by 600 pixel resolution.,LF,13,156,28,LF
+The system interface will use CCR nomenclature. The system must use the same nomenclature used in the existing WCS system and reports,LF,13,133,22,LF
+The interface must summarize the data in a fashion that\92s appealing to CCR management. Every report type must have at least one high level summary shown in the results dashboard/interface,LF,13,189,30,LF
+The system must use a point and click interface. 100% of all selection and navigation functionality must be able to be activated/selected by either a mouse or a keyboard,US,13,169,29,US
+The interface shall be easy to use. 90% of users should be able to successfully use the system to generate a report on their first use. The interface should adhere to IBM usability standards.,US,13,191,34,US
+Reports must be easy to generate. Reports must be generated within one button click and exported within one button click (after selecting the report),US,13,149,24,US
+A user shall be able to use the system without instruction after a short amount of time. After one use a user should understand and remember 90% of the system usage and navigation.,US,13,180,33,US
+All CCR users shall receive training before the WCS system is deployed. One training session will be held for 100% of CCR users before system deployment (based on a CCR user being available),US,13,190,33,US
+The WCS system shall use appropriate nomenclature and terminology as defined by the Corporate Community Grants organization. All interfaces and reports will undergo usability tests by CCR users.,US,13,194,28,US
+The WCS system shall be available at all times as long as IBM\92s internal intranet W3 is accessible. The WCS system will be available 95% of the time IBM\92s internal intranet W3 is available.,A,13,193,34,A
+The WCS system shall have the ability to connect other designated WCS databases currently not included in the system.,SC,13,117,19,SC
+The WCS system shall have the ability to include data for regions outside the United States and be accessed by users outside of the United States if approved by CCR management.,SC,13,176,31,SC
+The WCS system shall be run in a Windows environment. The WCS shall be accessed by users through the Internet on an IBM computer running a Windows 2000 or above operating system.,O,13,178,32,O
+The Brio portion of the WCS system must be able to export files in spreadsheet form (Microsoft Excel and Lotus 1-2-3 formats).  Brio will provide buttons in the user interface that produce/export reports in .xls or .123 file formats.,O,13,233,39,O
+The WCS system must run queries to the WCS databases once again (on a specified day) to update the available data available to CCR users. Queries must be made to external databases for data refresh once a week.,MN,13,210,38,MN
+All changes  updates  and additions to the WCS system shall be updated in the WCS Developer and WCS User Guides. Every change must be reflected in WCS system documentation,MN,13,171,29,MN
+The system shall only be accessed by authorized Corporate Community Grants (CCR) employees. Users must be authenticated using their IBM intranet user name and password.,SE,13,168,25,SE
+The WCS system shall not allow automatic logins by any user. Cookies containing WCS login information about a user will not be stored on a user\92s computer.,SE,13,157,27,SE
+All Web pages generated by the system shall be fully downloadable in no more than 10 seconds over a 40KBps modem connection.,PE,20,124,22,PE
+Responses to queries shall take no longer than 7 seconds to load onto the screen after the user submits the query.,PE,20,114,21,PE
+The system shall display confirmation messages to users within 4 seconds after the user submits information to the system.,PE,20,122,19,PE
+All network transactions that involve financial information or personally identifiable information shall be encrypted.,SE,20,118,14,SE
+Users shall be required to log in to the Cafeteria Ordering System for all operations except viewing a menu.,F,20,108,19,F
+Patrons shall log in according to the restricted computer system access policy.,SE,20,79,12,SE
+The system shall permit only cafeteria staff members who are on the list of authorized Menu Managers to create or edit menus.,F,20,125,22,F
+Only users who have been authorized for home access to the corporate Intranet may use the COS from non-company locations.,SE,20,121,20,SE
+The system shall show a tabbed display (or equivalent functionality) with the campus map on one tab and info on the most recently announced building on the other.,LF,25,162,28,LF
+The system shall allow the user to scroll the campus map from the campus map tab.,US,25,81,16,US
+The campus map shall provide visual clues regarding what areas have prepared audio and therefore may be selected.,LF,25,113,18,LF
+The campus map shall have a pause/resume button. The pause and resume button will allow the user to scroll and select other buildings without being interrupted by the automatic search and announce feature.,LF,25,205,33,LF
+The system shall provide a way to return to the startup screen.,US,25,63,12,US
+It should generate a report about registered complaint to the admin and response report to the user who has submitted his queries.,F,26,130,22,F
+The system should maintain correct schedules of labs and the documentation of all the lab equipment.,F,26,100,16,F
+The system should use the company colors and logos.,LF,27,51,9,LF
+The system shall be capable of restoring itself to its previous state in the event of failure (e.g. a system crash or power loss).,FT,27,130,24,FT
+The system shall be able to display a menu at all times to facilitate manual order taking should the need arise.,LF,27,112,21,LF
+The system shall utilise periodic 30-second keep-alive messages between tablets and the server to monitor tablet operational status.,O,27,132,18,O
+The system shall flag tablets that fail to send timely keep-alive messages as non-operational and disassociate the assigned waiter from the tablet.,FT,27,147,22,FT
+A waiter password used for tablet login must have a bit-strength of at least 64 bits.,SE,27,85,16,SE
+A waiter password used for tablet login must be changed every three months.,SE,27,75,13,SE
+A waiter shall only be able to log into one tablet at any given instance of time.,SE,27,81,17,SE
+A waiter that attempts to log into a second tablet while already logged into another tablet shall be rejected and notified through both tablets.,SE,27,144,24,SE
+A display shall not require a user to log in.,SE,27,45,10,SE
+A surface computer shall not require a user to log in.,SE,27,54,11,SE
+A tablet shall require a user to log in using a username and password.,SE,27,70,14,SE
+The system will fully function in major browsers.,PO,28,49,8,PO
+The system will support mobile users in some way.,PO,28,49,9,PO
+High level of performance requires high speed network and high level of connectivity.,PE,37,85,13,PE
+The available server must be reliable and the network connectivity in the supermarket should be proper for smooth flow of all operations and data.,O,37,146,24,O
+Every user of the software is provided a unique login ID and a password which is stored in the database hashed by SHA2 algorithm.,SE,37,129,24,SE
+The software is available for use from the supermarket opening time to the closing time.,A,37,88,15,A
+The system is expected to have reasonable short time response. The voter should be able to login and should be able to get response for his requests in 2-3 seconds.,PE,40,164,30,PE
+The data transaction between client and server must be encrypted using SSL technology.,SE,40,86,13,SE
+All the passwords that are generated or accepted must be stored in database in an encrypted form.,SE,40,97,17,SE
+To prevent attacks the system should generate random word and ask the user to enter it correctly for multiple tryings.,SE,40,118,20,SE
+The system should warn ECA users about the malfunction of the system.,FT,40,69,12,FT
+The system should be simple to use,LF,40,34,7,LF
+The system shall display all the products that can be configured.,F,46,65,11,F
+The system shall allow user to select the product to configure.,F,46,63,11,F
+The system shall display all the available components of the product to configure.,F,46,82,13,F
+The system shall enable user to add one or more component to the configuration.,F,46,79,14,F
+The system shall notify the user about any conflict in the current configuration.,F,46,81,13,F
+The system shall allow user to confirm the completion of current configuration.,F,46,79,12,F
+The system shall display detailed information of the selected products.,F,46,71,10,F
+The system shall provide browsing options to see product details.,F,46,65,10,F
+The system shall display detailed product categorization to the user.,F,46,69,10,F
+The system shall enable user to enter the search text on the screen.,F,46,68,13,F
+The system shall enable user to select multiple options on the screen to search.,F,46,80,14,F
+The system shall display all the matching products based on the search.,F,46,71,12,F
+The system shall display only 10 matching result on the current screen.,F,46,71,12,F
+The system shall enable user to navigate between the search results.,F,46,68,11,F
+The system shall notify the user when no matching product is found on the search.,F,46,81,15,F
+The system shall allow user to create profile and set his credential.,F,46,69,12,F
+The system shall authenticate user credentials to view the profile.,F,46,67,10,F
+The system shall allow user to update the profile information.,F,46,62,10,F
+The system shall display both the active and completed order history in the customer profile.,F,46,93,15,F
+The system shall allow user to select the order from the order history.,F,46,71,13,F
+The system shall display the detailed information about the selected order.,F,46,75,11,F
+The system shall display the most frequently searched items by the user in the profile.,F,46,87,15,F
+The system shall allow user to register for newsletters and surveys in the profile.,F,46,83,14,F
+The system shall allow user to select the support type he wants.,F,46,64,12,F
+The system shall allow user to enter the customer and product information for the support.,F,46,90,15,F
+The system shall display the customer support contact numbers on the screen.,F,46,76,12,F
+The system shall allow user to enter the contact number for support personnel to call.,F,46,86,15,F
+The system shall display the online help upon request.,F,46,54,9,F
+The system shall display the FAQ's upon request.,F,46,48,8,F
+The system shall maintain customer email information as a required part of customer profile.,F,46,92,14,F
+The system shall send an order confirmation to the user through email.,F,46,70,12,F
+The system shall display detailed invoice for current order once it is confirmed.,F,46,81,13,F
+The system shall optionally allow user to print the invoice.,F,46,60,10,F
+The system shall provide shopping cart during online purchase.,F,46,62,9,F
+The system shall allow user to add/remove products in the shopping cart.,F,46,72,12,F
+The system shall display different shipping options provided by shipping department.,F,46,84,11,F
+The system shall enable user to select the shipping method during payment process.,F,46,82,13,F
+The system shall display the shipping charges.,F,46,46,7,F
+The system shall display tentative duration for shipping.,F,46,57,8,F
+The system shall allow user to enter the order information for tracking.,F,46,72,12,F
+The system shall display the current tracking information about the order.,F,46,74,11,F
+The system shall calculate tax for the order.,F,46,45,8,F
+The system shall display tax information for the order.,F,46,55,9,F
+The system shall display available payment methods for payment.,F,46,63,9,F
+The system shall allow user to select the payment method for order.,F,46,67,12,F
+The system shall display the orders that are eligible to change.,F,46,64,11,F
+The system shall allow user to select the order to be changed.,F,46,62,12,F
+The system shall allow user to cancel the order.,F,46,48,9,F
+The system shall notify the user about any changes made to the order.,F,46,69,13,F
+The system shall enable the user to enter their reviews and ratings.,F,46,68,12,F
+The system shall display all the available financing options.,F,46,61,9,F
+The system shall allow user to select the financing option.,F,46,59,10,F
+The system shall notify the use about the financing request.,F,46,60,10,F
+The system shall allow user to view detailed sitemap.,F,46,53,9,F
+The system shall display all the available promotions to the user.,F,46,66,11,F
+The system shall allow user to select available promotion.,F,46,58,9,F
+The system shall allow user to confirm the purchase.,F,46,52,9,F
+The system shall enable user to enter the payment information.,F,46,62,10,F
+The system shall provide a uniform look and feel between all the web pages.,LF,46,75,14,LF
+The system shall provide a digital image for each product in the product catalog.,US,46,81,14,US
+The system shall provide use of icons and toolbars.,US,46,51,9,US
+The system shall provide handicap access.,US,46,41,6,US
+The system shall provide multi language support.,US,46,48,7,US
+The system shall provide a contractual agreement with an internet service provider for T3 access with 99.9999% availability.,A,46,124,18,A
+The system shall provide a contractual agreement with an internet service provider who can provide 99.999% availability through their network facilities onto the internet.,A,46,171,24,A
+The product shall be based on web and has to be run from a web server.,O,46,70,16,O
+The product shall take initial load time depending on internet connection strength which also depends on the media from which the product is run.,PE,46,145,24,PE
+The performance shall depend upon hardware components of the client/customer.,PE,46,77,10,PE
+The system shall use secure sockets in all transactions that include any confidential customer information.,SE,46,107,15,SE
+The system shall automatically log out all customers after a period of inactivity.,SE,46,82,13,SE
+The system shall confirm all transactions with the customer's web browser.,US,46,74,11,US
+The system shall not leave any cookies on the customer's computer containing the user's password.,SE,46,97,15,SE
+The system shall not leave any cookies on the customer's computer containing any of the user's confidential information.,SE,46,120,18,SE
+The customer's web browser shall never display a customer's password.  It shall always be echoed with special characters representing typed characters.,SE,46,151,21,SE
+The customer's web browser shall never display a customer's credit card number after retrieving from the database.  It shall always be shown with just the last 4 digits of the credit card number.,SE,46,195,33,SE
+The system's back-end servers shall never display a customer's password.  The customer's password may be reset but never shown.,SE,46,127,19,SE
+The system's back-end databases shall be encrypted.,SE,46,51,7,SE

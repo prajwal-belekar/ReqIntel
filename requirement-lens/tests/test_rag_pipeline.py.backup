@@ -1,0 +1,469 @@
+#!/usr/bin/env python3
+"""
+Tests for RequirementLens RAG pipeline.
+
+This module tests:
+- ML integration
+- FAISS integration  
+- Context building
+- Prompt generation
+- LLM service integration
+- Error handling
+- Structured output validation
+"""
+
+import sys
+import os
+import json
+import unittest
+from unittest.mock import Mock, patch, MagicMock
+
+# Add project root to path
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from rag.pipeline import analyze_requirement, RAGPipeline
+from llm.ollama_service import OllamaService
+from llm.context_builder import ContextBuilder
+from llm.schemas import RequirementAnalysis, validate_llm_json, repair_llm_json
+
+
+class TestRAGPipeline(unittest.TestCase):
+    """Test RAG pipeline components."""
+    
+    def setUp(self):
+        """Set up test fixtures."""
+        self.test_requirement = "The system shall be available 99.9% of the time during business hours."
+        self.mock_category = "Availability"
+        self.mock_confidence = 0.85
+        
+    def test_requirement_validation(self):
+        """Test requirement validation."""
+        # Test empty requirement
+        with self.assertRaises(ValueError):
+            analyze_requirement("")
+        
+        with self.assertRaises(ValueError):
+            analyze_requirement("   ")
+        
+        with self.assertRaises(ValueError):
+            analyze_requirement(None)
+        
+        # Test valid requirement
+        self.assertIsInstance(self.test_requirement, str)
+        self.assertTrue(len(self.test_requirement.strip()) > 0)
+    
+    @patch('ml.classifier.predict_category')
+    @patch('llm.embeddings.EmbeddingPipeline.embed_text')
+    @patch('vector_store.search.search')
+    @patch('llm.context_builder.ContextBuilder.build_context')
+    @patch('llm.ollama_service.OllamaService.generate_response')
+    def test_successful_pipeline(self, mock_ollama, mock_context, mock_search, mock_embed, mock_predict):
+        """Test successful pipeline execution."""
+        # Setup mocks
+        mock_predict.return_value = (self.mock_category, self.mock_confidence)
+        mock_embed.return_value = [0.1] * 384  # Mock embedding
+        mock_search.return_value = [
+            {
+                'guideline_id': 'AVAIL-001',
+                'title': 'System Uptime Requirements',
+                'similarity_score': 0.85,
+                'category': 'Availability',
+                'guideline_text': 'System availability should meet specified uptime percentage during operational hours.',
+                'tags': ['uptime', 'availability', 'reliability'],
+                'source': 'General Software Engineering Principles'
+            }
+        ]
+        mock_context.return_value = {
+            'requirement': self.test_requirement,
+            'ml_category': self.mock_category,
+            'ml_confidence': self.mock_confidence,
+            'top_guidelines': [
+                {
+                    'guideline_id': 'AVAIL-001',
+                    'title': 'System Uptime Requirements',
+                    'similarity': 0.85,
+                    'category': 'Availability',
+                    'text': 'System availability should meet specified uptime percentage during operational hours.'
+                }
+            ],
+            'context': 'Test context'
+        }
+        mock_ollama.return_value = json.dumps({
+            "risk_level": "Medium",
+            "risk_factors": ["No backup plan specified"],
+            "completeness_score": 0.7,
+            "missing_requirements": ["Backup duration", "Recovery time objective"],
+            "recommendations": ["Add disaster recovery plan", "Specify RTO/RPO"],
+            "explanation": "The requirement specifies availability but lacks disaster recovery details."
+        })
+        
+        # Execute pipeline
+        result = analyze_requirement(self.test_requirement)
+        
+        # Verify result
+        self.assertIsInstance(result, RequirementAnalysis)
+        self.assertEqual(result.requirement, self.test_requirement)
+        self.assertEqual(result.category, self.mock_category)
+        self.assertEqual(result.ml_confidence, self.mock_confidence)
+        self.assertEqual(result.risk_level, "Medium")
+        self.assertIn("No backup plan specified", result.risk_factors)
+        self.assertEqual(result.completeness_score, 0.7)
+        self.assertIn("Backup duration", result.missing_requirements)
+        self.assertIn("Add disaster recovery plan", result.recommendations)
+        self.assertEqual(len(result.similar_guidelines), 1)
+        self.assertEqual(result.similar_guidelines[0]['id'], 'AVAIL-001')
+        self.assertIn("disaster recovery", result.explanation)
+    
+    def test_schema_validation(self):
+        """Test Pydantic schema validation."""
+        # Test valid data
+        valid_data = {
+            "requirement": "Test requirement",
+            "category": "Security",
+            "ml_confidence": 0.85,
+            "risk_level": "Medium",
+            "risk_factors": ["Risk factor 1", "Risk factor 2"],
+            "completeness_score": 0.75,
+            "missing_requirements": ["Missing req 1"],
+            "recommendations": ["Recommendation 1"],
+            "similar_guidelines": [
+                {
+                    "id": "SEC-001",
+                    "title": "Security Guideline",
+                    "similarity": 0.8,
+                    "category": "Security",
+                    "text": "Security guideline text"
+                }
+            ],
+            "explanation": "Test explanation"
+        }
+        
+        analysis = RequirementAnalysis(**valid_data)
+        self.assertEqual(analysis.category, "Security")
+        self.assertEqual(analysis.ml_confidence, 0.85)
+        self.assertEqual(analysis.risk_level.value, "Medium")
+        self.assertEqual(analysis.completeness_score, 0.75)
+        
+        # Test invalid risk level
+        invalid_data = valid_data.copy()
+        invalid_data["risk_level"] = "Invalid"
+        
+        with self.assertRaises(ValueError):
+            RequirementAnalysis(**invalid_data)
+        
+        # Test invalid confidence
+        invalid_data = valid_data.copy()
+        invalid_data["ml_confidence"] = 1.5  # Out of range
+        
+        with self.assertRaises(ValueError):
+            RequirementAnalysis(**invalid_data)
+        
+        # Test invalid completeness score
+        invalid_data = valid_data.copy()
+        invalid_data["completeness_score"] = -0.1  # Out of range
+        
+        with self.assertRaises(ValueError):
+            RequirementAnalysis(**invalid_data)
+    
+    def test_json_validation(self):
+        """Test JSON validation and repair."""
+        # Test valid JSON
+        valid_json = '''
+        {
+            "risk_level": "High",
+            "risk_factors": ["No error handling"],
+            "completeness_score": 0.6,
+            "missing_requirements": ["Error handling spec"],
+            "recommendations": ["Add error handling"],
+            "explanation": "Requirement lacks error handling details"
+        }
+        '''
+        
+        result = validate_llm_json(valid_json)
+        self.assertEqual(result["risk_level"], "High")
+        self.assertEqual(result["completeness_score"], 0.6)
+        
+        # Test invalid JSON
+        invalid_json = '{"invalid": "json"'  # Missing closing brace
+        
+        with self.assertRaises(ValueError):
+            validate_llm_json(invalid_json)
+        
+        # Test malformed JSON that can be repaired
+        malformed_json = '''
+        {
+            "risk_level": "Medium",
+            "risk_factors": ["No risk"],
+            "completeness_score": 0.7,
+            "missing_requirements": [],
+            "recommendations": [],
+            "explanation": ""
+        '''
+        # Missing closing brace
+        
+        # Should fail validation but pass repair
+        with self.assertRaises(ValueError):
+            validate_llm_json(malformed_json)
+        
+        # Test repair
+        try:
+            result = repair_llm_json(malformed_json)
+            # If repair succeeds, it should be valid
+            self.assertEqual(result["risk_level"], "Medium")
+        except ValueError:
+            # Repair failed, which is also acceptable for this test
+            pass
+        
+        # Test invalid data in JSON
+        invalid_values_json = '''
+        {
+            "risk_level": "Very High",  # Invalid
+            "risk_factors": [],
+            "completeness_score": 1.5,  # Invalid
+            "missing_requirements": [],
+            "recommendations": [],
+            "explanation": ""
+        }
+        '''
+        
+        with self.assertRaises(ValueError):
+            validate_llm_json(invalid_values_json)
+        
+        # Test missing field
+        missing_field_json = '''
+        {
+            "risk_level": "Medium",
+            "risk_factors": [],
+            "completeness_score": 0.7,
+            "missing_requirements": [],
+            "recommendations": []
+            // missing explanation
+        }
+        '''
+        
+        with self.assertRaises(ValueError):
+            validate_llm_json(missing_field_json)
+    
+    def test_context_building(self):
+        """Test context builder."""
+        builder = ContextBuilder()
+        
+        context = builder.build_context(
+            self.test_requirement,
+            self.mock_category,
+            self.mock_confidence
+        )
+        
+        # Verify context structure
+        self.assertEqual(context['requirement'], self.test_requirement)
+        self.assertEqual(context['ml_category'], self.mock_category)
+        self.assertEqual(context['ml_confidence'], self.mock_confidence)
+        self.assertIsInstance(context['top_guidelines'], list)
+        self.assertIsInstance(context['context'], str)
+        self.assertIn("RAG Context for Requirement Analysis", context['context'])
+        self.assertIn("Important Note:", context['context'])
+        self.assertIn("LLM Instructions:", context['context'])
+    
+    def test_prompt_building(self):
+        """Test prompt building in RAG pipeline."""
+        pipeline = RAGPipeline()
+        
+        # Mock context
+        context = {
+            'requirement': self.test_requirement,
+            'ml_category': self.mock_category,
+            'ml_confidence': self.mock_confidence,
+            'top_guidelines': [
+                {
+                    'guideline_id': 'AVAIL-001',
+                    'title': 'System Uptime Requirements',
+                    'similarity': 0.85,
+                    'category': 'Availability',
+                    'text': 'System availability should meet specified uptime percentage during operational hours.'
+                }
+            ]
+        }
+        
+        prompt = pipeline._build_prompt(context)
+        
+        # Verify prompt structure
+        self.assertIn("=== REQUIREMENT ===", prompt)
+        self.assertIn(self.test_requirement, prompt)
+        self.assertIn("=== ML CLASSIFICATION ===", prompt)
+        self.assertIn(f"Category: {self.mock_category}", prompt)
+        self.assertIn(f"Confidence: {self.mock_confidence:.2f}", prompt)
+        self.assertIn("=== RETRIEVED GUIDELINES ===", prompt)
+        self.assertIn("System Uptime Requirements", prompt)
+        self.assertIn("Similarity: 0.85", prompt)
+    
+    @patch('llm.ollama_service.OllamaService.generate_response')
+    def test_ollama_error_handling(self, mock_ollama):
+        """Test Ollama error handling."""
+        from llm.ollama_service import OllamaError
+        
+        # Mock Ollama service error
+        mock_ollama.side_effect = OllamaError(
+            error_type="model_not_found",
+            message="Model 'llama3' not found"
+        )
+        
+        # Test that error propagates correctly
+        with self.assertRaises(Exception) as context:
+            analyze_requirement(self.test_requirement)
+        
+        # Verify error message contains expected information
+        self.assertTrue("Ollama verification failed" in str(context.exception) or "Pipeline failed" in str(context.exception))
+        self.assertIn("Model 'llama3' not found", str(context.exception))
+    
+    @patch('llm.ollama_service.OllamaService.generate_response')
+    def test_ollama_timeout_handling(self, mock_ollama):
+        """Test Ollama timeout handling."""
+        from llm.ollama_service import OllamaError
+        
+        # Mock timeout error
+        mock_ollama.side_effect = OllamaError(
+            error_type="request_failed",
+            message="Connection timeout"
+        )
+        
+        # Test that error propagates correctly
+        with self.assertRaises(Exception) as context:
+            analyze_requirement(self.test_requirement)
+        
+        # Verify error message
+        self.assertTrue("Ollama verification failed" in str(context.exception) or "Pipeline failed" in str(context.exception))
+        self.assertIn("Connection timeout", str(context.exception))
+    
+    def test_integration_without_mocks(self):
+        """Test integration with real components (but mocked external services)."""
+        # This test would require actual Ollama server
+        # For now, we'll test the structure without external dependencies
+        pass
+
+
+class TestOllamaService(unittest.TestCase):
+    """Test Ollama service."""
+    
+    @patch('requests.post')
+    def test_successful_call(self, mock_post):
+        """Test successful Ollama call."""
+        # Mock successful response
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.json.return_value = {
+            "response": "This is a test response",
+            "model": "llama3",
+            "created_at": "2023-01-01T00:00:00Z"
+        }
+        mock_post.return_value = mock_response
+        
+        service = OllamaService(timeout=10)
+        result = service.generate_response("Test prompt")
+        
+        self.assertEqual(result, "This is a test response")
+        mock_post.assert_called_once()
+
+
+@patch('requests.post')
+    def test_model_not_found_error(self, mock_post):
+        """Test model not found error."""
+        # Mock 404 response
+        mock_response = Mock()
+        mock_response.status_code = 404
+mock_post.return_value = mock_response
+        
+        service = OllamaService(timeout=10)
+        
+        with self.assertRaises(Exception) as context:
+            service.generate_response("Test prompt")
+        
+        self.assertTrue("model_not_found" in str(context.exception) or "Model 'llama3' not found" in str(context.exception))
+
+
+@patch('requests.post')
+    def test_service_unavailable_error(self, mock_post):
+        """Test service unavailable error."""
+        # Mock 503 response
+        mock_response = Mock()
+        mock_response.status_code = 503
+        mock_post.return_value = mock_response
+    
+        service = OllamaService(timeout=10)
+        
+        with self.assertRaises(Exception) as context:
+            service.generate_response("Test prompt")
+        
+self.assertTrue("ollama_unavailable" in str(context.exception) or "Ollama service unavailable" in str(context.exception))
+
+
+@patch('requests.post')
+    def test_api_error(self, mock_post):
+        """Test general API error."""
+        # Mock 500 response
+        mock_response = Mock()
+        mock_response.status_code = 500
+        mock_response.text = "Internal Server Error"
+        mock_post.return_value = mock_response
+    
+        service = OllamaService(timeout=10)
+        
+        with self.assertRaises(Exception) as context:
+            service.generate_response("Test prompt")
+        
+        self.assertTrue("api_error" in str(context.exception) or "Ollama API error" in str(context.exception))
+    
+@patch('requests.post')
+    def test_request_exception(self, mock_post):
+        """Test request exception handling."""
+        # Mock connection error
+        mock_post.side_effect = Exception("Connection failed")
+    
+        service = OllamaService(timeout=10)
+        
+        with self.assertRaises(Exception) as context:
+            service.generate_response("Test prompt")
+        
+        self.assertTrue("request_failed" in str(context.exception) or "Connection failed" in str(context.exception))
+
+
+class TestContextBuilder(unittest.TestCase):
+    """Test context builder."""
+    
+    def setUp(self):
+        """Set up test fixtures."""
+        self.builder = ContextBuilder()
+        self.test_requirement = "Users should be able to log in with username and password."
+        self.test_category = "Security"
+        self.test_confidence = 0.92
+    
+    def test_context_structure(self):
+        """Test context structure."""
+        context = self.builder.build_context(
+            self.test_requirement,
+            self.test_category,
+            self.test_confidence
+        )
+        
+        # Verify structure
+        self.assertEqual(context['requirement'], self.test_requirement)
+        self.assertEqual(context['ml_category'], self.test_category)
+        self.assertEqual(context['ml_confidence'], self.test_confidence)
+        self.assertIsInstance(context['top_guidelines'], list)
+        self.assertIsInstance(context['context'], str)
+        
+        # Verify context content
+        self.assertIn("RAG Context for Requirement Analysis", context['context'])
+        self.assertIn("Original Requirement:", context['context'])
+        self.assertIn("ML Classification:", context['context'])
+        self.assertIn("Important Note:", context['context'])
+        self.assertIn("Guideline", context['context'])
+        self.assertIn("LLM Instructions:", context['context'])
+
+
+def main():
+    """Run tests."""
+    unittest.main()
+
+
+if __name__ == "__main__":
+    main()

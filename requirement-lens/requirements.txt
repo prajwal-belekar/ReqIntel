@@ -1,0 +1,43 @@
+# RequirementLens - Python dependencies
+#
+# Exact pins so the .venv is reproducible and never touches system Python.
+# Install with:  scripts\setup_env.bat      (or)  .venv\Scripts\python -m pip install -r requirements.txt
+#
+# The extra index gives us the CPU-only torch build. Without it pip pulls the
+# default win_amd64 wheel, which bundles ~2.5GB of CUDA libraries we never use.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# --- Web API ---
+fastapi==0.128.0
+uvicorn[standard]==0.40.0
+pydantic==2.11.7
+python-dotenv==1.2.1
+
+# --- Database ---
+SQLAlchemy==2.0.44
+psycopg2-binary==2.9.12
+
+# --- LLM client (Ollama over HTTP) ---
+requests==2.32.5
+
+# --- ML / embeddings ---
+numpy==2.4.4
+pandas==2.3.3
+scikit-learn==1.7.2
+joblib==1.5.2
+sentence-transformers==6.1.0
+transformers==5.17.0
+torch==2.14.0+cpu
+
+# --- Vector store ---
+faiss-cpu==1.15.1
+
+# --- EDA notebooks / plots ---
+matplotlib==3.10.8
+seaborn==0.13.2
+
+# --- Tests ---
+pytest==9.1.1
+pytest-asyncio==1.4.0
+pytest-mock==3.15.1
+httpx==0.28.1
